@@ -18,6 +18,20 @@ Verification repo:
 - Not a proof or verification tool. Use rocm-truth for execution verification.
 - Not a ROCm installer or driver setup guide.
 
+## Is this like CUDA Toolkit?
+
+Short answer: no.
+
+CUDA Toolkit is an SDK (compilers, headers, runtimes) and assumes NVIDIA controls
+the whole stack. It makes an implicit promise: if it installs, CUDA exists.
+
+rocm-ai-toolkit does not ship compilers or drivers and does not guarantee
+execution. It helps you inspect environments, handle partial/broken ROCm
+states, and delegates proof to rocm-truth.
+
+One-liner: CUDA Toolkit assumes CUDA works. rocm-ai-toolkit helps you reason
+about whether ROCm works at all.
+
 ## Quick start
 
 ```powershell
