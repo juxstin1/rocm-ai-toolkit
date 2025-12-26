@@ -38,3 +38,8 @@ Set `HIPCC` to the full path of `hipcc` if it is not on PATH.
 
 - `AIKIT_PYTHON` to point at a specific Python executable
 - `AIKIT_GPU_INDEX` to set `HIP_VISIBLE_DEVICES` when using the .bat launchers
+
+## Contributing
+
+Keep scope user-facing and avoid proof claims. Verification should be delegated
+to rocm-truth. Issues and small PRs are welcome.

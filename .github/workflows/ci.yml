@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Packaging check
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e . --no-deps
+      - name: Syntax check
+        run: |
+          python -m py_compile aikit/*.py
+          python -m py_compile tools/*.py
+          python -m py_compile diagnostics/clock_probe.py
+      - name: Docs check
+        run: |
+          python - <<'PY'
+          import pathlib
+          import sys
+
+          required = [
+              "README.md",
+              "docs/SETUP_ROCM.md",
+              "diagnostics/README.md",
+          ]
+
+          missing = [p for p in required if not pathlib.Path(p).exists()]
+          if missing:
+              print("Missing files:", missing)
+              sys.exit(1)
+
+          empty = [p for p in required if pathlib.Path(p).stat().st_size == 0]
+          if empty:
+              print("Empty files:", empty)
+              sys.exit(1)
+          PY
