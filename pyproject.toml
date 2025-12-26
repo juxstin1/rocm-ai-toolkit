@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aikit"
+version = "0.1.0"
+description = "AI Toolkit - CLI tools and building blocks for local AI pipelines"
+requires-python = ">=3.12"
+dependencies = [
+    "torch",
+    "diffusers",
+    "accelerate",
+    "compel",
+    "peft",
+    "controlnet-aux",
+    "rembg[gpu]",
+    "faster-whisper",
+    "sentence-transformers",
+    "segment-anything",
+    "scikit-learn",
+    "opencv-python",
+    "pillow",
+]
+
+[project.scripts]
+aikit = "aikit.cli:main"
+imagine = "aikit.cli:imagine"
+transcribe = "aikit.cli:transcribe"
+embed = "aikit.cli:embed"
+segment = "aikit.cli:segment"
+rmbg = "aikit.cli:rmbg"
+
+[tool.hatch.build.targets.wheel]
+packages = ["aikit"]
