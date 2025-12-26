@@ -190,8 +190,8 @@ class Embedder:
                     if content.strip():
                         documents.append(content[:8000])
                         paths.append(str(file_path))
-                except:
-                    pass
+                except Exception as e:
+                    print(f"[embed] Skipped {file_path}: {e}")
 
         print(f"Indexing {len(documents)} files...")
         embeddings = self.model.encode(documents, show_progress_bar=True, convert_to_numpy=True)

@@ -55,8 +55,8 @@ class Embedder:
                     if content.strip():
                         documents.append(content[:8000])
                         paths.append(str(file_path))
-                except:
-                    pass
+                except Exception as e:
+                    print_status("embed", f"Skipped {file_path}: {e}")
 
         print_status("embed", f"Indexing {len(documents)} files...")
         embeddings = self.model.encode(

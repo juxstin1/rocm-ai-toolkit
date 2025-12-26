@@ -1,9 +1,14 @@
 [![CI](https://github.com/juxstin1/rocm-ai-toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/juxstin1/rocm-ai-toolkit/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/juxstin1/rocm-ai-toolkit)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows%20ROCm-blue)](docs/SETUP_ROCM.md)
 
 # rocm-ai-toolkit
 
-Command-line AI utilities for ROCm environments.
+Command-line AI utilities for **ROCm on Windows**.
+
+> **Target platform:** Windows with AMD ROCm/HIP. Tested on RX 9070 XT with
+> ROCm 6.4. On Windows, HIP uses the CUDA compatibility layer, so PyTorch
+> code uses `device="cuda"` even though it runs on AMD hardware.
 
 This repo provides user-facing CLI tools built around the `aikit` package.
 Verification is delegated to rocm-truth; this repo does not claim proof of GPU
