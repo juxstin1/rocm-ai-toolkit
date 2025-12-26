@@ -1,3 +1,6 @@
+[![CI](https://github.com/juxstin1/rocm-ai-toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/juxstin1/rocm-ai-toolkit/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/juxstin1/rocm-ai-toolkit)](LICENSE)
+
 # rocm-ai-toolkit
 
 Command-line AI utilities for ROCm environments.
@@ -9,6 +12,11 @@ execution.
 Verification repo:
 
 - https://github.com/juxstin1/rocm-truth
+
+## What this repo is not
+
+- Not a proof or verification tool. Use rocm-truth for execution verification.
+- Not a ROCm installer or driver setup guide.
 
 ## Quick start
 
