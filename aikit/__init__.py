@@ -36,14 +36,40 @@ Examples:
     image = rmbg.remove("photo.jpg")
 """
 
-from aikit.generators import ImageGen
-from aikit.transcription import Transcriber
-from aikit.embeddings import Embedder
-from aikit.segmentation import Segmenter
-from aikit.background import BackgroundRemover
-from aikit.core import get_device, MODELS_DIR, OUTPUT_DIR
-
 __version__ = "0.1.0"
+
+# Lazy imports - classes are loaded on first access
+# This allows aikit.core to be imported without loading torch
+
+
+def __getattr__(name):
+    """Lazy import handler for heavy dependencies."""
+    if name == "ImageGen":
+        from aikit.generators import ImageGen
+        return ImageGen
+    elif name == "Transcriber":
+        from aikit.transcription import Transcriber
+        return Transcriber
+    elif name == "Embedder":
+        from aikit.embeddings import Embedder
+        return Embedder
+    elif name == "Segmenter":
+        from aikit.segmentation import Segmenter
+        return Segmenter
+    elif name == "BackgroundRemover":
+        from aikit.background import BackgroundRemover
+        return BackgroundRemover
+    elif name == "get_device":
+        from aikit.core import get_device
+        return get_device
+    elif name == "MODELS_DIR":
+        from aikit.core import MODELS_DIR
+        return MODELS_DIR
+    elif name == "OUTPUT_DIR":
+        from aikit.core import OUTPUT_DIR
+        return OUTPUT_DIR
+    raise AttributeError(f"module 'aikit' has no attribute '{name}'")
+
 
 __all__ = [
     "ImageGen",
@@ -60,19 +86,23 @@ __all__ = [
 # Convenience functions
 def transcribe(audio_path: str, **kwargs) -> str:
     """Quick transcription."""
+    from aikit.transcription import Transcriber
     return Transcriber().transcribe(audio_path, **kwargs)
 
 
 def generate(prompt: str, **kwargs):
     """Quick image generation."""
+    from aikit.generators import ImageGen
     return ImageGen().generate(prompt, **kwargs)
 
 
 def remove_bg(image_path: str, output_path=None):
     """Quick background removal."""
+    from aikit.background import BackgroundRemover
     return BackgroundRemover().remove(image_path, output_path)
 
 
 def segment(image_path: str):
     """Quick segmentation."""
+    from aikit.segmentation import Segmenter
     return Segmenter().segment(image_path)

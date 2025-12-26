@@ -1,6 +1,5 @@
 """Core utilities and shared configuration."""
 
-import torch
 from pathlib import Path
 
 # Directories
@@ -13,6 +12,7 @@ OUTPUT_DIR.mkdir(exist_ok=True)
 
 def get_device():
     """Get the best available device."""
+    import torch
     if torch.cuda.is_available():
         return torch.device("cuda")
     return torch.device("cpu")
