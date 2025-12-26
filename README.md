@@ -21,6 +21,19 @@ ai help
 
 - `docs/SETUP_ROCM.md`
 
+## Diagnostics
+
+The `diagnostics/` folder includes a HIP clock probe that compiles a small
+kernel and measures GPU cycles over wall time.
+
+```powershell
+cd diagnostics
+build.bat
+python clock_probe.py
+```
+
+Set `HIPCC` to the full path of `hipcc` if it is not on PATH.
+
 ## Overrides
 
 - `AIKIT_PYTHON` to point at a specific Python executable

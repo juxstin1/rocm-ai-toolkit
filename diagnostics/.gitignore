@@ -1,0 +1,15 @@
+# Build artifacts (Windows/MSVC/HIPCC)
+*.dll
+*.obj
+*.lib
+*.exp
+*.exe
+*.pdb
+
+# Python artifacts
+__pycache__/
+*.pyc
+
+# IDE/Editor noise (optional but good practice)
+.vscode/
+.idea/
